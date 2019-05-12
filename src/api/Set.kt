@@ -44,7 +44,7 @@ class Set(clientID: String, setID: String, password: String? = null) {
         return jsonSet.modifiedDate
     }
 
-    fun gePublishedDate(): Long {
+    fun getPublishedDate(): Long {
         return jsonSet.publishedDate
     }
 
