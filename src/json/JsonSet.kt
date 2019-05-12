@@ -4,7 +4,7 @@ import com.beust.klaxon.*
 
 private val klaxon = Klaxon()
 
-data class JsonSet (
+internal data class JsonSet (
     val id: Int,
     val url: String,
     val title: String,
@@ -69,7 +69,7 @@ data class JsonSet (
     }
 }
 
-data class JsonCreator (
+internal data class JsonCreator (
     val username: String,
 
     @Json(name = "account_type")
@@ -81,7 +81,7 @@ data class JsonCreator (
     val id: Long
 )
 
-data class JsonTerm (
+internal data class JsonTerm (
     val id: Long,
     val term: String,
     val definition: String,
