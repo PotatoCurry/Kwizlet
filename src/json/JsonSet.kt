@@ -1,4 +1,4 @@
-package json
+package io.github.potatocurry.json
 
 import com.beust.klaxon.*
 

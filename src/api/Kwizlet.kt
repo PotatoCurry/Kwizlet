@@ -1,4 +1,4 @@
-package api
+package io.github.potatocurry.api
 
 const val quizletEndpoint = "https://api.quizlet.com/2.0/"
 

@@ -1,6 +1,6 @@
-package api
+package io.github.potatocurry.api
 
-import json.JsonSet
+import io.github.potatocurry.json.JsonSet
 import java.net.URL
 
 class Set(clientID: String, setID: String, password: String? = null) {
