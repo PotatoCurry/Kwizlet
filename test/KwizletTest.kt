@@ -9,7 +9,8 @@ class KwizletTest {
     fun testSet() {
         val kwizlet = Kwizlet(System.getenv("QuizletClientID"))
         val set = kwizlet.getSet("389102373")
-        val termMap = set.getTermMap()
-        assertNotNull(termMap)
+        val termPairs = set.termPairs
+        assertNotNull(termPairs)
+        assertEquals(30, set.termCount)
     }
 }
