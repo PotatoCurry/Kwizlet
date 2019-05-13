@@ -40,3 +40,21 @@ dependencies {
 ```
 
 Additional instructions can be found [here](https://jitpack.io/#PotatoCurry/Kwizlet)
+
+## Examples
+
+### Print set contents
+```kotlin
+import io.github.potatocurry.kwizlet.api.Kwizlet
+
+val clientID = "CLIENT_ID"
+val setID = "SET_ID"
+
+fun main() {
+    val kwizlet = Kwizlet(clientID)
+    val set = kwizlet.getSet(setID)
+    val termMap = set.getTermMap()
+    for ((term, definition) in termMap)
+        println("$term: $definition")
+}
+```
