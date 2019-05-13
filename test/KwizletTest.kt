@@ -1,6 +1,6 @@
-package io.github.potatocurry
+package io.github.potatocurry.kwizlet
 
-import io.github.potatocurry.api.Kwizlet
+import io.github.potatocurry.kwizlet.api.Kwizlet
 import org.junit.Test
 import kotlin.test.*
 

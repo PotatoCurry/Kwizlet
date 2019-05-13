@@ -1,4 +1,4 @@
-package io.github.potatocurry.json
+package io.github.potatocurry.kwizlet.json
 
 import com.beust.klaxon.*
 

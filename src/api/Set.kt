@@ -1,6 +1,6 @@
-package io.github.potatocurry.api
+package io.github.potatocurry.kwizlet.api
 
-import io.github.potatocurry.json.JsonSet
+import io.github.potatocurry.kwizlet.json.JsonSet
 import java.net.URL
 
 class Set(clientID: String, setID: String, password: String? = null) {
