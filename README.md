@@ -53,8 +53,7 @@ val setID = "SET_ID"
 fun main() {
     val kwizlet = Kwizlet(clientID)
     val set = kwizlet.getSet(setID)
-    val termMap = set.getTermMap()
-    for ((term, definition) in termMap)
+    for ((term, definition) in set.termPairs)
         println("$term: $definition")
 }
 ```
