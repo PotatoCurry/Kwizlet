@@ -1,6 +1,7 @@
 package io.github.potatocurry.kwizlet.api
 
 import io.github.potatocurry.kwizlet.json.JsonSet
+import io.github.potatocurry.kwizlet.json.JsonTerm
 import java.net.URL
 
 class Set(clientID: String, setID: String, password: String? = null) {
@@ -15,96 +16,47 @@ class Set(clientID: String, setID: String, password: String? = null) {
         jsonSet = JsonSet.fromJson(jsonContent) ?: throw KotlinNullPointerException("JSON content empty at $jsonURL")
     }
 
-    fun getID(): Int {
-        return jsonSet.id
-    }
+    val id = jsonSet.id
 
-    fun getURL(): String {
-        return jsonSet.url
-    }
+    val url = jsonSet.url
 
-    fun getTitle(): String {
-        return jsonSet.title
-    }
+    val title = jsonSet.title
 
-    fun getAuthor(): String {
-        return jsonSet.createdBy
-    }
+    val author = jsonSet.createdBy
 
-    fun getTermCount(): Int {
-        return jsonSet.termCount
-    }
+    val termCount = jsonSet.termCount
 
     // TODO: Get actual timestamps from dates
-    fun getCreatedDate(): Long {
-        return jsonSet.createdDate
-    }
+    val createdDate = jsonSet.createdDate
 
-    fun getModifiedDate(): Long {
-        return jsonSet.modifiedDate
-    }
+    val modifiedDate = jsonSet.modifiedDate
 
-    fun getPublishedDate(): Long {
-        return jsonSet.publishedDate
-    }
+    val publishedDate = jsonSet.publishedDate
 
-    fun hasImages(): Boolean {
-        return jsonSet.hasImages
-    }
+    val hasImages = jsonSet.hasImages
 
     // TODO: Make Kotlin types to represent visibility?
-    fun getVisibility(): String {
-        return jsonSet.visibility
-    }
+    val visibility = jsonSet.visibility
 
-    fun getEditable(): String {
-        return jsonSet.editable
-    }
+    val editable = jsonSet.editable
 
-    fun hasAccess(): Boolean {
-        return jsonSet.hasAccess
-    }
+    val hasAccess = jsonSet.hasAccess
 
-    fun canEdit(): Boolean {
-        return jsonSet.canEdit
-    }
+    val canEdit = jsonSet.canEdit
 
-    fun getDescription(): String {
-        return jsonSet.description
-    }
+    val description = jsonSet.description
 
-    // TODO: Make return language type?
-    fun getTermLanguage(): String {
-        return jsonSet.langTerms
-    }
+    val termLanguage = jsonSet.langTerms
 
-    fun getDefinitionLanguage(): String {
-        return jsonSet.langDefinitions
-    }
+    val definitionLanguage = jsonSet.langDefinitions
 
-    fun getTerms(): List<String> {
-        val list = mutableListOf<String>()
-        jsonSet.terms.forEach {
-            list += it.term
-        }
-        return list
-    }
+    val terms = jsonSet.terms.map(JsonTerm::term)
 
-    fun getDefinitions(): List<String> {
-        val list = mutableListOf<String>()
-        jsonSet.terms.forEach {
-            list += it.definition
-        }
-        return list
-    }
+    val definitions = jsonSet.terms.map(JsonTerm::definition)
 
-    fun getTermMap(): Map<String, String> {
-        val map = mutableMapOf<String, String>()
-        val terms = getTerms()
-        val definitions = getDefinitions()
-        for (i in 0 until jsonSet.termCount) {
-            map[terms[i]] = definitions[i]
-        }
-        return map
-    }
+    // Convenience methods not part of the Quizlet API
+
+    val termPairs = terms.zip(definitions)
+
+    val termMap = termPairs.toMap()
 }
