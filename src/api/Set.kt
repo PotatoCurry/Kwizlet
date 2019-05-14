@@ -9,9 +9,9 @@ class Set(clientID: String, setID: String, password: String? = null) {
 
     init {
         val jsonURL: String = if (password == null)
-            "${quizletEndpoint}sets/$setID?client_id=$clientID"
+            "$quizletEndpoint/sets/$setID?client_id=$clientID"
         else
-            "${quizletEndpoint}sets/$setID?client_id=$clientID/$password"
+            "$quizletEndpoint/sets/$setID?client_id=$clientID/$password"
         val jsonContent = URL(jsonURL).readText()
         jsonSet = JsonSet.fromJson(jsonContent) ?: throw KotlinNullPointerException("JSON content empty at $jsonURL")
     }
