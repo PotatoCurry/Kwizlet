@@ -4,7 +4,7 @@ import io.github.potatocurry.kwizlet.json.JsonSet
 import io.github.potatocurry.kwizlet.json.JsonTerm
 import java.net.URL
 
-class Set(clientID: String, setID: String, password: String? = null) {
+class Set internal constructor(clientID: String, setID: String, password: String? = null) {
     private val jsonSet: JsonSet
 
     init {
