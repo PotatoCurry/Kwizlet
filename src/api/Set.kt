@@ -59,4 +59,8 @@ class Set internal constructor(clientID: String, setID: String, password: String
     val termPairs = terms.zip(definitions)
 
     val termMap = termPairs.toMap()
+
+    fun String.stripParenthesis(): String {
+        return this.replace("\\(.*\\)", "").trim()
+    }
 }
