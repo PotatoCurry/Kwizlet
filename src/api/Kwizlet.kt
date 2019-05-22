@@ -20,4 +20,10 @@ class Kwizlet(private val clientID: String) {
         val path = url.path.split("/")
         return path.first(String::isNotEmpty)
     }
+
+    fun search(query: String): Search { // TODO: Make solution using multiple pages to allow for unrestricted max results parameter
+        return Search(clientID, query.replace(" ", "+"))
+    }
 }
+
+///** Returns a [List] of [Set]s resulting from searching with the given [query]. */

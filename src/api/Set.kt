@@ -8,7 +8,7 @@ class Set internal constructor(clientID: String, setID: String, password: String
     private val jsonSet: JsonSet
 
     init {
-        val jsonURL: String = if (password == null)
+        val jsonURL = if (password == null)
             "$quizletEndpoint/sets/$setID?client_id=$clientID"
         else
             "$quizletEndpoint/sets/$setID?client_id=$clientID/$password"
