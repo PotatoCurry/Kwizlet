@@ -6,16 +6,18 @@ internal const val quizletEndpoint = "https://api.quizlet.com/2.0"
 
 class Kwizlet(private val clientID: String) {
     /** Returns a [Set] by [setID] with an optional [password]. */
-    fun getSet(setID: String, password: String? = null): Set {
+    fun getSet(setID: String, password: String? = null): Set { // TODO: Make variable arguments or array? TODO: Make term only version?
         return Set(clientID, setID, password)
     }
 
-    /**
-     * Returns the ID of the [Set] the [url] refers to.
-     * Often coupled with [getSet].
-     * */
-    fun parseURL(url: String): String {
-        val path = URL(url).path.split("/")
+    /** Returns a [Set] by [setURL] with an optional [password]. */
+    fun getSet(setURL: URL, password: String? = null): Set { // TODO: Make variable arguments or array? TODO: Make term only version?
+        return getSet(parseURL(setURL), password)
+    }
+
+    /** Returns the ID of the [Set] the [url] refers to. */
+    fun parseURL(url: URL): String {
+        val path = url.path.split("/")
         return path.first(String::isNotEmpty)
     }
 }
