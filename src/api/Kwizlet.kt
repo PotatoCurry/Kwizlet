@@ -21,6 +21,7 @@ class Kwizlet(private val clientID: String) {
         return path.first(String::isNotEmpty)
     }
 
+    /** Returns a [Search] object by the given [query]. */
     fun search(query: String): Search { // TODO: Make solution using multiple pages to allow for unrestricted max results parameter
         return Search(clientID, query.replace(" ", "+"))
     }
