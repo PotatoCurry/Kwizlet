@@ -56,9 +56,15 @@ class Set internal constructor(clientID: String, setID: String, password: String
 
     // Convenience methods not part of the Quizlet API
 
+    // TODO: Come up with solution to overloaded terms so correct definitions are not counted as wrong
     val termPairs = terms.zip(definitions)
 
-    val termMap = termPairs.toMap()
+    @Deprecated(
+        "Can cause errors on sets with overloaded terms",
+        ReplaceWith("termPairs"),
+        DeprecationLevel.WARNING
+    )
+    val termMap by lazy { termPairs.toMap() }
 
     fun String.stripParenthesis() = this.replace("\\(.*\\)", "").trim()
 }
