@@ -85,6 +85,12 @@ internal data class JsonTerm (
     val id: Long,
     val term: String,
     val definition: String,
-    val image: Any? = null,
+    val image: JsonImage? = null,
     val rank: Int
+)
+
+internal data class JsonImage (
+    val url: String,
+    val width: Long,
+    val height: Long
 )

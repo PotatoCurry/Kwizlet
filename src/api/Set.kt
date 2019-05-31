@@ -7,6 +7,8 @@ import java.net.URL
 class Set internal constructor(clientID: String, setID: String, password: String? = null) {
     private val jsonSet: JsonSet
 
+    val questions: List<Question>
+
     init {
         val jsonURL = if (password == null)
             "$quizletEndpoint/sets/$setID?client_id=$clientID"
@@ -14,6 +16,9 @@ class Set internal constructor(clientID: String, setID: String, password: String
             "$quizletEndpoint/sets/$setID?client_id=$clientID/$password"
         val jsonContent = URL(jsonURL).readText()
         jsonSet = JsonSet.fromJson(jsonContent) ?: throw KotlinNullPointerException("JSON content empty at $jsonURL")
+        val tempQuestions = mutableListOf<Question>()
+        jsonSet.terms.forEach { tempQuestions += Question(it) }
+        questions = tempQuestions
     }
 
     val id = jsonSet.id
@@ -67,4 +72,16 @@ class Set internal constructor(clientID: String, setID: String, password: String
     val termMap by lazy { termPairs.toMap() }
 
     fun String.stripParenthesis() = this.replace("\\(.*\\)", "").trim()
+}
+
+data class Question internal constructor(private val jsonTerm: JsonTerm) {
+    val id = jsonTerm.id
+
+    val term = jsonTerm.term
+
+    val definition = jsonTerm.definition
+
+    val image = jsonTerm.image?.url
+
+    val rank = jsonTerm.rank
 }
