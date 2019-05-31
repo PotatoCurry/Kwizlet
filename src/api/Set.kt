@@ -81,7 +81,7 @@ data class Question internal constructor(private val jsonTerm: JsonTerm) {
 
     val definition = jsonTerm.definition
 
-    val image = jsonTerm.image?.url
+    val imageURL = jsonTerm.image?.url
 
     val rank = jsonTerm.rank
 }
