@@ -84,8 +84,8 @@ internal data class JsonCreator (
 internal data class JsonTerm (
     val id: Long,
     val term: String,
-    val definition: String,
-    val image: JsonImage? = null,
+    val definition: String?,
+    val image: JsonImage?,
     val rank: Int
 )
 
